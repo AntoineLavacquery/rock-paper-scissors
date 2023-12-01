@@ -1,19 +1,5 @@
-function getPlayerChoice() {
-    playerSelection = prompt("Choice: ");
-    // Ensure the good format of player input
-    playerSelection = playerSelection[0].toUpperCase() + playerSelection.slice(1);
-
-    // Ensure input corresponds one of the three possibilities
-    while (playerSelection !== ("Rock" || "Paper" || "Scissors")) {
-        playerSelection = prompt("Invalid, please type again: ");
-        // Ensure the good format of player input
-        playerSelection = playerSelection[0].toUpperCase() + playerSelection.slice(1);
-    }
-    return playerSelection;
-}
-
+// Randomly return either ‘Rock’, ‘Paper’ or ‘Scissors’
 function getComputerChoice() {
-    // will randomly return either ‘Rock’, ‘Paper’ or ‘Scissors’
     let random = Math.random() * 3;
 
     if (random < 1) return ("Rock");
@@ -22,6 +8,7 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
+    // To ensure there's no tie
     while (playerSelection === computerSelection){
         computerSelection = getComputerChoice();
     }
@@ -34,25 +21,31 @@ function playRound(playerSelection, computerSelection) {
     else return {win: 0, player: playerSelection, computer: computerSelection}
 }
 
-function game() {
-    playerSelection = getPlayerChoice();
+function game(playerSelection) {
     computerSelection = getComputerChoice();
-    return playRound(playerSelection, computerSelection)
+    return playRound(playerSelection, computerSelection);
 }
 
 let playerScore = 0;
 let computerScore = 0;
+const htmlPlayerScore = document.querySelector("#playerScore");
+const htmlComputerScore = document.querySelector("#computerScore");
 
-for (i = 0; i < 5; i++) {
-    gameResult = game();
+const choiceButtons = document.querySelector("#choiceButtons");
+choiceButtons.addEventListener("click", function (event) {
+    let playerSelection = event.target.id;
+    gameResult = game(playerSelection);
+    
     if (gameResult.win) {
         playerScore += 1;
+        htmlPlayerScore.innerText = playerScore;
+        
         console.log(`Player: ${playerScore} | Computer: ${computerScore}\nYou win! ${gameResult.player} beats ${gameResult.computer}`)
     }
     else {
         computerScore += 1;
+        htmlComputerScore.innerText = computerScore;
         console.log(`Player: ${playerScore} | Computer: ${computerScore}\nYou lose! ${gameResult.player} is beaten by ${gameResult.computer}`)
     }
-}
+})
 
-console.log(`Final result -> Player: ${playerScore} | Computer: ${computerScore}`)
