@@ -30,8 +30,10 @@ let playerScore = 0;
 let computerScore = 0;
 const htmlPlayerScore = document.querySelector("#playerScore");
 const htmlComputerScore = document.querySelector("#computerScore");
+const htmlFinalScore = document.querySelector("#final");
 
 const choiceButtons = document.querySelector("#choiceButtons");
+let buttons = choiceButtons.querySelectorAll("button");
 choiceButtons.addEventListener("click", function (event) {
     let playerSelection = event.target.id;
     gameResult = game(playerSelection);
@@ -47,5 +49,26 @@ choiceButtons.addEventListener("click", function (event) {
         htmlComputerScore.innerText = computerScore;
         console.log(`Player: ${playerScore} | Computer: ${computerScore}\nYou lose! ${gameResult.player} is beaten by ${gameResult.computer}`)
     }
+
+    if (playerScore === 5 || computerScore === 5) {
+        buttons.forEach(function(button) {
+            button.disabled = true;
+        });
+
+        if (playerScore > computerScore) htmlFinalScore.innerHTML = "You win !"
+        else htmlFinalScore.innerHTML = "You lose !"
+    }
 })
 
+const retryButton = document.querySelector("#retry");
+retryButton.addEventListener("click", function (event) {
+    playerScore = 0;
+    computerScore = 0;
+    htmlPlayerScore.innerText = playerScore;
+    htmlComputerScore.innerText = computerScore;
+    htmlFinalScore.innerHTML = "Choose wisely"
+
+    buttons.forEach(function(button) {
+        button.disabled = false;
+    });
+})
