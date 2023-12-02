@@ -1,15 +1,15 @@
 :root {
-    /* --primary-light: #ddd; */
-    --font-color: rgba(0, 0, 0, 0.2);
+    --font-color: rgb(68, 68, 68);
+    --disabled-color: rgba(69, 68, 68, 0.3);
+    --shadow-color: rgba(0, 0, 0, 0.2);
     --rock-color: rgba(179, 164, 164, 1);
     --paper-color: rgba(210, 134, 80, 1);
     --scissors-color: rgba(233, 90, 90, 1);
     --valid-color: rgb(45, 191, 91);
-    --invalid-color: rgba(0, 0, 0);
 }
 
 * {
-    color: rgb(69, 68, 68);
+    color: var(--font-color);
     font-size: 20px;
 }
 
@@ -18,7 +18,7 @@ h1 {
 }
 
 .shadowed {
-    box-shadow: 5px 5px 5px 0px var(--font-color);
+    box-shadow: 5px 5px 5px 0px var(--shadow-color);
 }
 
 
@@ -93,8 +93,7 @@ button {
 }
 
 ul button {
-    /* background: red; */
-    border: 2px solid rgb(69, 68, 68);
+    border: 2px solid var(--font-color);
     height: 30px;
 }
 

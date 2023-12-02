@@ -33,6 +33,28 @@ const htmlComputerScore = document.querySelector("#computer-score");
 const htmlFinalScore = document.querySelector("#result-annoncement");
 const htmlRoundScore = document.querySelector("#round-score");
 
+const startAgainBtn = document.querySelector("#start-again");
+startAgainBtn.disabled = true;
+startAgainBtn.style.color = "var(--disabled-color)";
+startAgainBtn.style.border = "2px solid var(--disabled-color)";
+
+startAgainBtn.addEventListener("click", function (event) {
+    playerScore = 0;
+    computerScore = 0;
+    htmlRoundScore.innerHTML = "-";
+    htmlPlayerScore.innerText = playerScore;
+    htmlComputerScore.innerText = computerScore;
+    htmlFinalScore.innerHTML = "-"
+    htmlFinalScore.color = ""
+
+    buttons.forEach(function(button) {
+        button.disabled = false;
+    });
+    startAgainBtn.disabled = true;
+    startAgainBtn.style.color = "var(--disabled-color)";
+    startAgainBtn.style.border = "2px solid var(--disabled-color)";
+})
+
 
 const choiceButtons = document.querySelector("#choice-buttons");
 let buttons = choiceButtons.querySelectorAll("button");
@@ -61,27 +83,14 @@ buttons.forEach(function(button) {
                 button.disabled = true;
             });
 
+            startAgainBtn.disabled = false;
+            startAgainBtn.style.color = "var(--font-color)";
+            startAgainBtn.style.border = "2px solid var(--font-color)";
+
+
+
             if (playerScore > computerScore) htmlFinalScore.innerHTML = "You win !"
             else htmlFinalScore.innerHTML = "You lose !"
         }
     })
 })
-
-const startAgainBtn = document.querySelector("#start-again");
-startAgainBtn.addEventListener("click", function (event) {
-    playerScore = 0;
-    computerScore = 0;
-    htmlRoundScore.innerHTML = "-";
-    htmlPlayerScore.innerText = playerScore;
-    htmlComputerScore.innerText = computerScore;
-    htmlFinalScore.innerHTML = "-"
-    htmlFinalScore.color = ""
-
-    buttons.forEach(function(button) {
-        button.disabled = false;
-    });
-})
-
-// startAgainBtn.disabled = true;
-// startAgainBtn.style.margin = true;
-
