@@ -31,6 +31,8 @@ let computerScore = 0;
 const htmlPlayerScore = document.querySelector("#player-score");
 const htmlComputerScore = document.querySelector("#computer-score");
 const htmlFinalScore = document.querySelector("#result-annoncement");
+const htmlRoundScore = document.querySelector("#round-score");
+
 
 const choiceButtons = document.querySelector("#choice-buttons");
 let buttons = choiceButtons.querySelectorAll("button");
@@ -44,13 +46,14 @@ buttons.forEach(function(button) {
         if (gameResult.win) {
             playerScore += 1;
             htmlPlayerScore.innerText = playerScore;
-            
-            // console.log(`Player: ${playerScore} | Computer: ${computerScore}\nYou win! ${gameResult.player} beats ${gameResult.computer}`)
+            htmlRoundScore.innerHTML = `${gameResult.player} beats ${gameResult.computer.toLowerCase()}`
+            htmlRoundScore.style.color = "var(--valid-color)";
         }
         else {
             computerScore += 1;
             htmlComputerScore.innerText = computerScore;
-            // console.log(`Player: ${playerScore} | Computer: ${computerScore}\nYou lose! ${gameResult.player} is beaten by ${gameResult.computer}`)
+            htmlRoundScore.innerHTML = `${gameResult.player} is beaten ${gameResult.computer.toLowerCase()}`
+            htmlRoundScore.style.color = "var(--scissors-color)";
         }
 
         if (playerScore === 5 || computerScore === 5) {
@@ -64,15 +67,21 @@ buttons.forEach(function(button) {
     })
 })
 
-// const retryButton = document.querySelector("#retry");
-// retryButton.addEventListener("click", function (event) {
-//     playerScore = 0;
-//     computerScore = 0;
-//     htmlPlayerScore.innerText = playerScore;
-//     htmlComputerScore.innerText = computerScore;
-//     htmlFinalScore.innerHTML = "Choose wisely"
+const startAgainBtn = document.querySelector("#start-again");
+startAgainBtn.addEventListener("click", function (event) {
+    playerScore = 0;
+    computerScore = 0;
+    htmlRoundScore.innerHTML = "-";
+    htmlPlayerScore.innerText = playerScore;
+    htmlComputerScore.innerText = computerScore;
+    htmlFinalScore.innerHTML = "-"
+    htmlFinalScore.color = ""
 
-//     buttons.forEach(function(button) {
-//         button.disabled = false;
-//     });
-// })
+    buttons.forEach(function(button) {
+        button.disabled = false;
+    });
+})
+
+// startAgainBtn.disabled = true;
+// startAgainBtn.style.margin = true;
+
