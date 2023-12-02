@@ -28,47 +28,51 @@ function game(playerSelection) {
 
 let playerScore = 0;
 let computerScore = 0;
-const htmlPlayerScore = document.querySelector("#playerScore");
-const htmlComputerScore = document.querySelector("#computerScore");
-const htmlFinalScore = document.querySelector("#final");
+const htmlPlayerScore = document.querySelector("#player-score");
+const htmlComputerScore = document.querySelector("#computer-score");
+const htmlFinalScore = document.querySelector("#result-annoncement");
 
-const choiceButtons = document.querySelector("#choiceButtons");
+const choiceButtons = document.querySelector("#choice-buttons");
 let buttons = choiceButtons.querySelectorAll("button");
-choiceButtons.addEventListener("click", function (event) {
-    let playerSelection = event.target.id;
-    gameResult = game(playerSelection);
-    
-    if (gameResult.win) {
-        playerScore += 1;
-        htmlPlayerScore.innerText = playerScore;
+buttons.forEach(function(button) {
+    button.addEventListener("click", function() {
+        const playerSelection = button.textContent;
+        console.log(playerSelection);
+
+        gameResult = game(playerSelection);
         
-        console.log(`Player: ${playerScore} | Computer: ${computerScore}\nYou win! ${gameResult.player} beats ${gameResult.computer}`)
-    }
-    else {
-        computerScore += 1;
-        htmlComputerScore.innerText = computerScore;
-        console.log(`Player: ${playerScore} | Computer: ${computerScore}\nYou lose! ${gameResult.player} is beaten by ${gameResult.computer}`)
-    }
+        if (gameResult.win) {
+            playerScore += 1;
+            htmlPlayerScore.innerText = playerScore;
+            
+            // console.log(`Player: ${playerScore} | Computer: ${computerScore}\nYou win! ${gameResult.player} beats ${gameResult.computer}`)
+        }
+        else {
+            computerScore += 1;
+            htmlComputerScore.innerText = computerScore;
+            // console.log(`Player: ${playerScore} | Computer: ${computerScore}\nYou lose! ${gameResult.player} is beaten by ${gameResult.computer}`)
+        }
 
-    if (playerScore === 5 || computerScore === 5) {
-        buttons.forEach(function(button) {
-            button.disabled = true;
-        });
+        if (playerScore === 5 || computerScore === 5) {
+            buttons.forEach(function(button) {
+                button.disabled = true;
+            });
 
-        if (playerScore > computerScore) htmlFinalScore.innerHTML = "You win !"
-        else htmlFinalScore.innerHTML = "You lose !"
-    }
+            if (playerScore > computerScore) htmlFinalScore.innerHTML = "You win !"
+            else htmlFinalScore.innerHTML = "You lose !"
+        }
+    })
 })
 
-const retryButton = document.querySelector("#retry");
-retryButton.addEventListener("click", function (event) {
-    playerScore = 0;
-    computerScore = 0;
-    htmlPlayerScore.innerText = playerScore;
-    htmlComputerScore.innerText = computerScore;
-    htmlFinalScore.innerHTML = "Choose wisely"
+// const retryButton = document.querySelector("#retry");
+// retryButton.addEventListener("click", function (event) {
+//     playerScore = 0;
+//     computerScore = 0;
+//     htmlPlayerScore.innerText = playerScore;
+//     htmlComputerScore.innerText = computerScore;
+//     htmlFinalScore.innerHTML = "Choose wisely"
 
-    buttons.forEach(function(button) {
-        button.disabled = false;
-    });
-})
+//     buttons.forEach(function(button) {
+//         button.disabled = false;
+//     });
+// })

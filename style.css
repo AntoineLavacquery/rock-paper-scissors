@@ -1,0 +1,132 @@
+* {
+    color: rgb(69, 68, 68);
+    font-size: 20px;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+.shadowed {
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background: #fdf6e3;
+}
+
+#header,
+#footer {
+    width: 100%;
+    height: 100px;
+    background-color: rgba(255, 254, 248, 1);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0px;
+    padding: 0px;
+    flex-wrap: nowrap;
+}
+
+#footer {
+    gap: 0 8px;
+}
+
+#header {
+    flex-direction: column;
+    height: 130px;
+}
+
+#footer {
+    height: 80px;
+}
+
+ul {
+    margin: 0;
+    list-style-type: none;
+    position: relative;
+    height: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: start;
+    gap: 0px 43px;
+    padding: 0px;
+    flex-wrap: nowrap;
+}
+
+#result-annoncement {
+    font-size: 48px;
+}
+
+#rock-button,
+#paper-button,
+#scissors-button {
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    border: 0;
+    border-radius: 8px;
+    background-color: rgba(255, 254, 248, 1);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0px;
+    padding: 0px;
+    flex-wrap: nowrap;
+}
+
+#rock-text {
+    color: rgba(179, 164, 164, 1);
+    font-size: 20px;
+}
+
+#paper-text {
+    color: rgba(210, 134, 80, 1);
+}
+
+#scissors-text {
+    color: rgba(233, 90, 90, 1);
+}
+
+#choice-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 0px 50px;
+}
+
+#score-board {
+    width: 400px;
+    height: 240px;
+    border-radius: 8px;
+    background-color: rgba(255, 254, 248, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 0px;
+    padding: 0px;
+    flex-wrap: nowrap;
+}
+
+#main {
+    /* position: absolute; */
+    width: auto;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 0px;
+    flex-wrap: nowrap;
+}

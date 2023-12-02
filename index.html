@@ -4,31 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
 <body>
-    <div id="header">
-        <h1>Rock-Paper-Scissors</h1>
-    </div>
-
     <div id="main">
-        <div id="choiceButtons">
-            <button id="Rock">Rock</button>
-            <button id="Paper">Paper</button>
-            <button id="Scissors">Scissors</button>
+        <div id="header" class="shadowed">
+            <h1>Rock-Paper-Scissors</h1>
+            Mark five points to win
         </div>
-        <div id="score">
+
+        <div id="choice-buttons">
+            <button id="rock-button" class="shadowed"><span id="rock-text">Rock</span></button>
+            <button id="paper-button" class="shadowed"><span id="paper-text">Paper</span></button>
+            <button id="scissors-button" class="shadowed"><span id="scissors-text">Scissors</span></button>
+        </div>
+
+        <div id="score-board" class="shadowed">
+            <div id="round-score">Rock beats scissors</div>
+            <div id="result-annoncement">-</div>
             <ul>
-                <li>Player: <span id="playerScore">0</span></li>
-                <li>Computer: <span id="computerScore">0</span></li>
+                <li>Player: <span id="player-score">0</span></li>
+                <li>Computer: <span id="computer-score">0</span></li>
+                <li><button>Start again</button></li>
             </ul>
-            <div id="final"></div>
         </div>
     </div>
 
-    <button id="retry">Retry</button>
-
-    <div id="footer">
-        This is the footer
+    <div id="footer" class="shadowed">
+        AntoineLavacquery
+        <a href="https://github.com/AntoineLavacquery/rock-paper-scissors"><i class="fa fa-github"></i></a>
     </div>
 
     <script src="javascript.js"></script>
